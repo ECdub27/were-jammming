@@ -5,17 +5,17 @@ import { useCallback } from "react";
 
 const Track = (props) =>{
 // add track 
-
+const {track, onRemove} = props;
 const addTrack = useCallback((event) =>{
     props.onAdd(props.track);
 },
-[props.track, props.onAdd]);
+[props]);
 
 // remove track 
 const removeTrack = useCallback((event) =>{
     props.onRemove(props.track);
 },
-[props.track, props.onRemove])
+[props])
 
 const renderAction = () =>{
     if(props.onRemove){
