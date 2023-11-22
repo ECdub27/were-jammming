@@ -1,12 +1,12 @@
-const clientId = ''; // enter client id here
-const redirectUri = 'https://localhost:3000/';
+const clientId = 'f7ef40be65ea452a89ab4851c9cec9e7'; // enter client id here
+const redirectUri = 'https://localhost:3000/'; 
 let accessToken; 
+const code = undefined;
 
-
-const Spotify = () =>{
+const Spotify = (props) =>{
 
 const getAccessToken = () => {
-    if (accessToken){
+    if(accessToken){
         return accessToken;
     }
     const accessTokenMatch = window.location.href.match('/access_token=([^&]*)/');
@@ -21,8 +21,10 @@ const getAccessToken = () => {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
-    const searchTerm = async (term) =>{
+}
+ const searchTerm = async (term) =>{
         const accessToken = Spotify.getAccessToken();
+        const url1 = 'https://api.spotify.com/v1/me'
         const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
 const options = {
 	method: 'GET',
@@ -32,18 +34,18 @@ const options = {
         Authorization: `Bearer ${accessToken}`
 	}
 };
-        return await fetch(url, options).then(response => {
-            return response.json()
+        return await fetch(url1, options).then(response => {
+            return response.json();
         }).then(jsonResponse =>{
             if(!jsonResponse){
                 return [];
             }
-            return jsonResponse.tracks.item.map((track) => 
+            return jsonResponse.tracks.items[0].map((track) => 
             ({id: track.id, name:track.name, artist: track.artist[0],
             album: track.album.name,
         uri: track.uri}));
-        })
-    };
+        });
+    }
 
     const savePlaylist =  async (name, trackUris) =>{
         const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
@@ -82,11 +84,11 @@ const options = {
                 method: 'POST',
                 body: JSON.stringify({uris: trackUris})
             });
-        })
+        });
         }
-    }
+    };
 
-};
+
 
 
 

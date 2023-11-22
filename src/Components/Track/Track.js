@@ -4,21 +4,22 @@ import { useCallback } from "react";
 
 
 const Track = (props) =>{
+    
 // add track 
-const {track, onRemove} = props;
 const addTrack = useCallback((event) =>{
     props.onAdd(props.track);
 },
-[props]);
+// add on add and track
+[props.onAdd, props.track]);
 
 // remove track 
 const removeTrack = useCallback((event) =>{
     props.onRemove(props.track);
-},
-[props])
+}, // add on remove and track
+[props.onRemove, props.track])
 
 const renderAction = () =>{
-    if(props.onRemove){
+    if(props.isRemoval){
      return <button className="track-action" onClick={removeTrack}>
        - 
      </button>

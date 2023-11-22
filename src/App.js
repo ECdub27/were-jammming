@@ -6,30 +6,30 @@ import SearchResults from './Components/SearchResults/SearchResults';
 
 import Playlist from './Components/Playlist/Playlist';
 
-function App() {
-  const [searchResults, setSearchResults] = useState('');
-  const [playlistName, setPlaylistName] =  useState([]);
-  const [playlistTrack, setPlaylistTrack] = useState('');
+function App(props) {
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] =  useState('New Playlist');
+  const [playlistTrack, setPlaylistTrack] = useState([]);
 
 const search = useCallback((term) =>{
   Spotify.search(term).then(setSearchResults);
-},[])
+},[]);
 
 const addTrack = useCallback((track) =>{
-  if(playlistTrack.some((savedTrack) => savedTrack.id === track.id))
+  if (playlistTrack.some((savedTrack) => savedTrack.id === track.id))
   return;
 setPlaylistTrack((prevTracks) => [...prevTracks, track])
-},[playlistTrack])
+},[playlistTrack]);
 
 
 const removeTrack = useCallback((track) => {
   setPlaylistTrack((prevTracks) =>{
-    prevTracks.filter((currentTrack) => currentTrack.id === track.id);
+    prevTracks.filter((currentTrack) => currentTrack.id !== track.id);
   })
 },[])
 
 const updatePlaylistName = useCallback((name) =>{
-  setPlaylistName(name)
+  setPlaylistName(name);
 },[])
 
 
@@ -38,18 +38,18 @@ const savePlaylist = useCallback(() =>{
   Spotify.savePlaylist(playlistName, trackuris).then(() =>{
     setPlaylistName('New Playlist');
     setPlaylistTrack([]);
-  })
-},[playlistName, playlistTrack])
+  });
+},[playlistName, playlistTrack]);
 
   return (
     <div className="App">
       <h1>In the Name of Bob Marley</h1>
       <section>
-       <h2>We're Ja <span>mmmm</span>ing</h2>
+       <h2>We're Ja-mmmm-ing</h2>
        <p>Please come jam with me! </p>
 
        <Searchbar onSearch={search} />
-       <SearchResults onAdd={addTrack} searchResults={searchResults}/>
+       <SearchResults onAdd={addTrack} searchResults={searchResults} />
        <div className='app-playlist'>
         <Playlist playlistName={playlistName}
         onSave={savePlaylist}
@@ -62,6 +62,6 @@ const savePlaylist = useCallback(() =>{
        
     </div>
   );
-}
+};
 
 export default App;
