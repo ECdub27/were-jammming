@@ -49,3 +49,6 @@ h2 {
     flex-direction: column;
   }
 }
+.h2,.p-1{
+  background-color: #010c3f;
+}

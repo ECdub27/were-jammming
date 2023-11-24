@@ -1,11 +1,12 @@
-const clientId = 'f7ef40be65ea452a89ab4851c9cec9e7'; // enter client id here
-const redirectUri = 'https://localhost:3000/'; 
-let accessToken; 
-const code = undefined;
+const clientId = '436b905ebd2b4771a146e5826f839a6f'; // enter client id here
+const redirectUri = 'https://localhost:3000/'; // https://localhost:3000/
+const spotifyUrl = `https://accounts.spotify.com/authorize?response_type=token&scope=playlist-modify-public&client_id=${clientId}&redirect_uri=${redirectUri}`;
+let accessToken = undefined;
 
-const Spotify = (props) =>{
 
-const getAccessToken = () => {
+const Spotify = {
+
+getAccessToken(){
     if(accessToken){
         return accessToken;
     }
@@ -21,10 +22,10 @@ const getAccessToken = () => {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
-}
- const searchTerm = async (term) =>{
+},
+ async searchTerm(term){
         const accessToken = Spotify.getAccessToken();
-        const url1 = 'https://api.spotify.com/v1/me'
+       // const url1 = 'https://api.spotify.com/v1/me'
         const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
 const options = {
 	method: 'GET',
@@ -34,20 +35,19 @@ const options = {
         Authorization: `Bearer ${accessToken}`
 	}
 };
-        return await fetch(url1, options).then(response => {
-            return response.json();
-        }).then(jsonResponse =>{
-            if(!jsonResponse){
-                return [];
-            }
-            return jsonResponse.tracks.items[0].map((track) => 
-            ({id: track.id, name:track.name, artist: track.artist[0],
-            album: track.album.name,
-        uri: track.uri}));
-        });
-    }
+        const response = await fetch(url, options);
+     const jsonResponse = await response.json();
+     if (!jsonResponse) {
+         return [];
+     }
+     return jsonResponse.tracks.items[0].map((track) => ({
+         id: track.id, name: track.name, artist: track.artists[0].name,
+         album: track.album.name,
+         uri: track.uri
+     }));
+    },
 
-    const savePlaylist =  async (name, trackUris) =>{
+    savePlaylist(name, trackUris){
         const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
         if(!name || trackUris){
             return;
@@ -65,7 +65,7 @@ const options = {
             
         };
         let userId;
-        return await fetch(url, {headers: headers}).then(response =>{
+        return fetch(url, {headers: headers}).then(response =>{
             return response.json();
         }).then(json => {
             
@@ -85,7 +85,7 @@ const options = {
                 body: JSON.stringify({uris: trackUris})
             });
         });
-        }
+        },
     };
 
 

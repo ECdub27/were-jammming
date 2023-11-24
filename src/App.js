@@ -12,7 +12,7 @@ function App(props) {
   const [playlistTrack, setPlaylistTrack] = useState([]);
 
 const search = useCallback((term) =>{
-  Spotify.search(term).then(setSearchResults);
+  Spotify.searchTerm(term).then(setSearchResults);
 },[]);
 
 const addTrack = useCallback((track) =>{
@@ -44,11 +44,11 @@ const savePlaylist = useCallback(() =>{
   return (
     <div className="App">
       <h1>In the Name of Bob Marley</h1>
-      <section>
-       <h2>We're Ja-mmmm-ing</h2>
-       <p>Please come jam with me! </p>
-
-       <Searchbar onSearch={search} />
+      
+       <h2 className='h2'>We're Ja-mmmm-ing</h2>
+       <p className='p-1'>Please come jam with me! </p>
+       
+       <Searchbar onSearch={search} onClick={search} />
        <SearchResults onAdd={addTrack} searchResults={searchResults} />
        <div className='app-playlist'>
         <Playlist playlistName={playlistName}
@@ -58,7 +58,7 @@ const savePlaylist = useCallback(() =>{
         onRemove={removeTrack}
         onNameChange={updatePlaylistName}/>
        </div>
-       </section>
+       
        
     </div>
   );
