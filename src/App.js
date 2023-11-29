@@ -3,10 +3,10 @@ import { useState, useCallback } from 'react';
 import Spotify from './Util/Spotify';
 import Searchbar from './Components/SearchBar/SearchBar';
 import SearchResults from './Components/SearchResults/SearchResults';
-
+import { Box, Typography } from '@mui/material';
 import Playlist from './Components/Playlist/Playlist';
 
-function App(props) {
+function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] =  useState('New Playlist');
   const [playlistTrack, setPlaylistTrack] = useState([]);
@@ -34,7 +34,7 @@ const updatePlaylistName = useCallback((name) =>{
 
 
 const savePlaylist = useCallback(() =>{
-  const trackuris = playlistTrack.map((track)=> track.uri)
+  const trackuris = playlistTrack.map((track)=> track.uri);
   Spotify.savePlaylist(playlistName, trackuris).then(() =>{
     setPlaylistName('New Playlist');
     setPlaylistTrack([]);
@@ -43,12 +43,15 @@ const savePlaylist = useCallback(() =>{
 
   return (
     <div className="App">
+      <Box backgroundColor=''>
+        <Typography fontFamily='League Spartan'>
       <h1>In the Name of Bob Marley</h1>
       
        <h2 className='h2'>We're Ja-mmmm-ing</h2>
        <p className='p-1'>Please come jam with me! </p>
-       
-       <Searchbar onSearch={search} onClick={search} />
+       </Typography>
+       </Box>
+       <Searchbar onSearch={search}  />
        <SearchResults onAdd={addTrack} searchResults={searchResults} />
        <div className='app-playlist'>
         <Playlist playlistName={playlistName}

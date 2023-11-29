@@ -1,6 +1,7 @@
 import React from "react";
 import { useCallback } from "react";
 import './Playlist.css';
+import Button from '@mui/material/Button';
 import TrackList from "../TrackList/TrackList";
 
 const Playlist = (props) =>{
@@ -17,9 +18,9 @@ const handleNameChange = useCallback((event) =>{
     tracks={props.playlistTracks}
     isRemoval={true}
     onRemove={props.onRemove}/>
-    <button className="Spotify-save-button"> SAVE TO SPOTIFY
+    <Button className="Spotify-save-button" variant='contained'> SAVE TO SPOTIFY
 
-    </button>
+    </Button>
   </div>
 );
 };

@@ -2,6 +2,7 @@ body,
 html,
 #root {
   height: 100%;
+  background-color: #56445D;
 }
 
 html {
@@ -10,7 +11,7 @@ html {
 
 h1 {
   padding: .77rem 0;
-  background-color: #010c3f;
+  background-color: #56445D;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-size: 1.88rem;
@@ -22,7 +23,7 @@ h1 .highlight {
 }
 
 h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'League Spartan','Monsterrat', sans-serif;
   font-size: 1.55rem;
 }
 
@@ -48,7 +49,4 @@ h2 {
     align-items: center;
     flex-direction: column;
   }
-}
-.h2,.p-1{
-  background-color: #010c3f;
 }

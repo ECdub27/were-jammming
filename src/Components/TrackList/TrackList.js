@@ -4,9 +4,10 @@ import './TrackList.css';
 
 
 const TrackList = (props) =>{
+    
 return (
     <div className="Track-list">
-        {props.track && props.track.map((track) =>{
+        { props.track && props.track.map((track) =>{
             return (
                 <Track 
         onAdd={props.onAdd}

@@ -20,11 +20,11 @@ const removeTrack = useCallback((event) =>{
 
 const renderAction = () =>{
     if(props.isRemoval){
-     return <button className="track-action" onClick={removeTrack}>
+     return <button className="track-action" onClick={() =>{ props.onRemove(props.track)}}>
        - 
      </button>
     } 
-    return <button className="track-action" onClick={addTrack}>+</button>
+    return <button className="track-action" onClick={() =>{props.onAdd(props.track)}}>+</button>
 }
 
 
