@@ -7,6 +7,7 @@ const Spotify = {
 
 getAccessToken(){
     if(accessToken){
+        console.log(accessToken)
         return accessToken;
     }
     const accessTokenMatch = window.location.href.match('/access_token=([^&]*)/');
@@ -18,27 +19,30 @@ getAccessToken(){
       window.history.pushState('Access Token', null, '/'); // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      const accessUrl = 'spotify117.p.rapidapi.com';
       window.location = accessUrl;
     }
 },
  searchTerm(term){
         const accessToken = Spotify.getAccessToken();
+        console.log(accessToken);
       //  const url1 = 'https://api.spotify.com/v1/me'
-        const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
-const options = {
+      const url = `https://spotify117.p.rapidapi.com/search/?keyword=songs&type=track$`;
+      const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'd8488f23c0msh87fc82cac08b614p14a945jsn0d879d59d146',
-		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
+		'X-RapidAPI-Key': '8dc8f78457mshfe1417c5917ee3ap1dea33jsnab732757815e',
+		'X-RapidAPI-Host': 'spotify117.p.rapidapi.com',
         Authorization: `Bearer ${accessToken}`
 	}
 };
         return fetch(url, options).then(response => {
             return response.json();
         }).then(jsonResponse => {
+            console.log(jsonResponse)
             if(!jsonResponse.tracks){
                 return [];
+                
             }
             return jsonResponse.tracks.items.map(track => ({
                 id: track.id,
@@ -46,29 +50,24 @@ const options = {
                 artist: track.artists[0].name,
                 uri: track.uri
             }));
+            
         });
      
     },
 
-    async savePlaylist(name, trackUris){
-        const url = 'https://spotify23.p.rapidapi.com/search/?q=%60%24%7Bterm%7D%60&type=multi&offset=0&limit=10&numberOfTopResults=5';
+    savePlaylist(name, trackUris){
+const url = 'https://spotify117.p.rapidapi.com/search/?keyword=songs&type=track';
         if(!name || trackUris){
             return;
         }
         const accessToken = Spotify.getAccessToken();
         const headers = {
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': 'd8488f23c0msh87fc82cac08b614p14a945jsn0d879d59d146',
-            'X-RapidAPI-Host': 'SpotifyUserAPIserg-osipchukV1.p.rapidapi.com',
+            'X-RapidAPI-Key': '8dc8f78457mshfe1417c5917ee3ap1dea33jsnab732757815e',
+            'X-RapidAPI-Host': 'spotify117.p.rapidapi.com',
             Auhorization: `Bearer ${accessToken}`,
-            body: new URLSearchParams({
-                code: '<REQUIRED>',
-                redirect_uri: '<REQUIRED>'
-            })
-            
-        };
-        let userId;
-        return await fetch(url, {headers: headers}).then(response =>{
+            };
+            let userId;
+        return fetch(url, {headers: headers}).then(response =>{
             return response.json();
         }).then(json => {
             
