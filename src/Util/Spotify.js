@@ -1,3 +1,5 @@
+import { api_key } from "../config";
+
 const clientId = '436b905ebd2b4771a146e5826f839a6f'; // enter client id here
 const redirectUri = 'http://localhost:3000/'; // https://localhost:3000/
 let accessToken;
@@ -31,7 +33,7 @@ getAccessToken(){
       const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '8dc8f78457mshfe1417c5917ee3ap1dea33jsnab732757815e',
+		'X-RapidAPI-Key': `${api_key}`,
 		'X-RapidAPI-Host': 'spotify117.p.rapidapi.com',
         Authorization: `Bearer ${accessToken}`
 	}
@@ -62,7 +64,7 @@ const url = 'https://spotify117.p.rapidapi.com/search/?keyword=songs&type=track'
         }
         const accessToken = Spotify.getAccessToken();
         const headers = {
-            'X-RapidAPI-Key': '8dc8f78457mshfe1417c5917ee3ap1dea33jsnab732757815e',
+            'X-RapidAPI-Key': `${api_key}`,
             'X-RapidAPI-Host': 'spotify117.p.rapidapi.com',
             Auhorization: `Bearer ${accessToken}`,
             };
