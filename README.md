@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### This is a playlist creator that uses a Spotify API
+Here we are able to search for our song, add/remove our song, and have it save to our spotify profile.
+
+### Limitations
+As of 12/5/23, there has been some issues with the spotify that has been consumed. I have reached out to the original creator to fix their bugs.
+### Styling
+I have styled using MUI, please see the docs for install and what dependencies are needed to run MUI. 
+- To get yourself started:  npm install @mui/material @emotion/react @emotion/styled 
+https://mui.com/material-ui/getting-started/installation/ 
+tutorial getting started with MUI I found helpful: https://www.youtube.com/watch?v=o1chMISeTC0

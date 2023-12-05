@@ -5,6 +5,9 @@ import Searchbar from './Components/SearchBar/SearchBar';
 import SearchResults from './Components/SearchResults/SearchResults';
 import { Box, Typography } from '@mui/material';
 import Playlist from './Components/Playlist/Playlist';
+import images from './Util/images';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -60,6 +63,14 @@ const savePlaylist = useCallback(() =>{
         onAdd={addTrack}
         onRemove={removeTrack}
         onNameChange={updatePlaylistName}/>
+
+        <ImageList>
+          {images.map((pic) => (
+            <ImageListItem>
+
+            </ImageListItem>
+          ))}
+        </ImageList>
        </div>
        
        

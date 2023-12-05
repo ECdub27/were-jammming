@@ -21,7 +21,7 @@ props.onSearch(term);
 
 return (
     <div>
-       <TextField size="small"> <input placeholder='Find' onChange={handleTermChange}/> </TextField>
+       <TextField size="small" defaultValue='Find Song,Artist,Album'> <input placeholder='Find' onChange={handleTermChange}/> </TextField>
         <Button size="small" variant='contained' color='secondary'className='search-button' onClick={search}>SEARCH <SearchIcon /></Button>
     </div>
 );
