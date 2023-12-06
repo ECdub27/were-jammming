@@ -12,7 +12,7 @@ const handleNameChange = useCallback((event) =>{
 
 
   return (
-  <div className="Playlist Tracks">
+  <div className="Playlist-Tracks">
     <input  onChange={handleNameChange}/>
     <TrackList 
     tracks={props.playlistTracks}

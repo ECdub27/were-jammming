@@ -5,7 +5,8 @@ import Searchbar from './Components/SearchBar/SearchBar';
 import SearchResults from './Components/SearchResults/SearchResults';
 import { Box, Typography } from '@mui/material';
 import Playlist from './Components/Playlist/Playlist';
-import images from './Util/images';
+import Card from '@mui/material/Card';
+import images from './Images/images';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
@@ -55,6 +56,7 @@ const savePlaylist = useCallback(() =>{
        </Typography>
        </Box>
        <Searchbar onSearch={search}  />
+       <Box backgroundColor='#56445D'>
        <SearchResults onAdd={addTrack} searchResults={searchResults} />
        <div className='app-playlist'>
         <Playlist playlistName={playlistName}
@@ -63,16 +65,10 @@ const savePlaylist = useCallback(() =>{
         onAdd={addTrack}
         onRemove={removeTrack}
         onNameChange={updatePlaylistName}/>
-
-        <ImageList>
-          {images.map((pic) => (
-            <ImageListItem>
-
-            </ImageListItem>
-          ))}
-        </ImageList>
-       </div>
        
+       
+       </div>
+       </Box>
        
     </div>
   );

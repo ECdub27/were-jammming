@@ -5,7 +5,7 @@ import TrackList from "../TrackList/TrackList";
 const SearchResults = (props) =>{
     return (
 <div className="searchResults">
-    <h2>Results</h2>
+    <h2 className="results-heading">Results</h2>
     <TrackList onAdd={props.onAdd} track={props.searchResults}/>
 </div>
     );

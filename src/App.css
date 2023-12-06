@@ -13,7 +13,7 @@ h1 {
   padding: .77rem 0;
   background-color: #56445D;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   font-size: 1.88rem;
   color: #fff;
 }
@@ -43,6 +43,7 @@ h2 {
   justify-content: space-between;
   width: 100%;
   margin-top: 10px;
+  background-color: #FDB927;
 }
 
 @media only screen and (max-width: 1020px) {
