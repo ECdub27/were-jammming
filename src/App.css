@@ -20,11 +20,15 @@ h1 {
 
 h1 .highlight {
   color: #6c41ec;
+  
 }
-
-h2 {
+h1{
+  color: #FDB927;
+}
+h2 .p1 {
   font-family: 'League Spartan','Monsterrat', sans-serif;
   font-size: 1.55rem;
+  color: #FDB927;
 }
 
 .App {
@@ -51,4 +55,9 @@ h2 {
     align-items: center;
     flex-direction: column;
   }
+}
+.sidepanel{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }

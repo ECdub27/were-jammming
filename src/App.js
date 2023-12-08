@@ -5,10 +5,9 @@ import Searchbar from './Components/SearchBar/SearchBar';
 import SearchResults from './Components/SearchResults/SearchResults';
 import { Box, Typography } from '@mui/material';
 import Playlist from './Components/Playlist/Playlist';
-import Card from '@mui/material/Card';
-import images from './Images/images';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import ImageGallery from './Components/ImageGallery/imageGallery';
+
+
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -48,7 +47,7 @@ const savePlaylist = useCallback(() =>{
   return (
     <div className="App">
       <Box backgroundColor=''>
-        <Typography fontFamily='League Spartan'>
+        <Typography fontFamily='League Spartan' color='#FDB927'>
       <h1>In the Name of Bob Marley</h1>
       
        <h2 className='h2'>We're Ja-mmmm-ing</h2>
@@ -65,7 +64,11 @@ const savePlaylist = useCallback(() =>{
         onAdd={addTrack}
         onRemove={removeTrack}
         onNameChange={updatePlaylistName}/>
-       
+       <aside className='sidepanel'>
+        
+        <ImageGallery/>
+        
+       </aside>
        
        </div>
        </Box>

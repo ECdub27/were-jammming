@@ -29,7 +29,7 @@ getAccessToken(){
         const accessToken = Spotify.getAccessToken();
         console.log(accessToken);
       //  const url1 = 'https://api.spotify.com/v1/me'
-      const url = `https://spotify117.p.rapidapi.com/search/?keyword=songs&type=track$`;
+      const url = 'https://spotify117.p.rapidapi.com/search/?keyword=https%3A%2F%2Fopen.spotify.com%2Fsearch&type=track';
       const options = {
 	method: 'GET',
 	headers: {
@@ -58,7 +58,7 @@ getAccessToken(){
     },
 
     savePlaylist(name, trackUris){
-const url = 'https://spotify117.p.rapidapi.com/search/?keyword=songs&type=track';
+const url = 'https://spotify117.p.rapidapi.com/search/?keyword=https%3A%2F%2Fopen.spotify.com%2Fsearch&type=track';
         if(!name || trackUris){
             return;
         }
